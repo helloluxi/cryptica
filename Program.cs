@@ -10,24 +10,17 @@ class Program
 {
     static void Main()
     {
-        // string s = File.ReadAllText("input.json");
-        // LevelData data = JsonSerializer.Deserialize<LevelData>(s);
-
-        // Level Hard-1
-        LevelData data = new() {
-            walls = new int[] { 31, 44 },
-            quads = new int[] { 11, 21, 12 },
-            goals = new int[] { 35, 71 }
-        };
-
+        string s = File.ReadAllText("input.json");
+        LevelData data = JsonSerializer.Deserialize<LevelData>(s);
         Solver solver = new Solver(data);
         solver.Solution();
     }
 }
 
-[Serializable]
 class LevelData{
-    public int[] walls, quads, goals;
+    public int[] walls { get; set; }
+    public int[] quads { get; set; }
+    public int[] goals { get; set; }
 }
 
 class Solver
